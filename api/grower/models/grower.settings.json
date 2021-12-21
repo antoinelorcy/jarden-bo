@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "growers",
+  "info": {
+    "name": "Grower"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "thumbnail": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "cover": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "canDeliver": {
+      "type": "boolean",
+      "required": false
+    },
+    "openingHours": {
+      "type": "component",
+      "repeatable": true,
+      "component": "opening-hours.opening-hours"
+    },
+    "city": {
+      "model": "city",
+      "via": "growers"
+    },
+    "products": {
+      "collection": "product",
+      "via": "grower"
+    },
+    "categories": {
+      "collection": "category",
+      "via": "growers",
+      "dominant": true
+    },
+    "canSell": {
+      "type": "boolean"
+    },
+    "adress": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    }
+  }
+}
